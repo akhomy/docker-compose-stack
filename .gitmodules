@@ -1,3 +1,3 @@
-[submodule "projects/docker-compose-lamp"]
-	path = projects/docker-compose-lamp
+[submodule "projects/examples/docker-compose-lamp"]
+	path = projects/examples/docker-compose-lamp
 	url = https://github.com/akhomy/docker-compose-lamp
