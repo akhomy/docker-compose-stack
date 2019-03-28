@@ -12,8 +12,8 @@ services:
         command:
             - "--api"
             - "--docker"
+            - "--web"
             - "--docker.domain=${TRAEFIK_DOCKER_DOMAIN}"
-            - "--docker.watch"
         labels:
             - "traefik.docker.network=${TRAEFIK_NETWORK}"
             - "traefik.enable=true"
