@@ -1,0 +1,11 @@
+/.docker-sync
+/**/projects/
+/**/.docker-sync
+/**/runtime/mysql/*
+/**/runtime/postgres/data/*
+/**/runtime/mongo/*
+/**/runtime/solr_drupal_6_x/data/*/
+/nbproject
+/.vscode
+/.history
+docker-compose-web.code-workspace
