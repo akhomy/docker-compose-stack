@@ -10,9 +10,15 @@ services:
         - /var/run/docker.sock:/var/run/docker.sock
         # see https://github.com/containous/traefik/issues/7
         command:
+#            - "--retry.attempts=10"
+#            - "--idletimeout=60s"
+#            - "--forwardingtimeouts.responseheadertimeout=60s"
+            - "--debug=${TRAEFIK_DEBUG}"
+            - "--logLevel=${TRAEFIK_LOG_LEVEL}"
             - "--api"
             - "--docker"
             - "--web"
+            - "--docker.watch"
             - "--docker.domain=${TRAEFIK_DOCKER_DOMAIN}"
         labels:
             - "traefik.docker.network=${TRAEFIK_NETWORK}"

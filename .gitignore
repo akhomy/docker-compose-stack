@@ -7,5 +7,5 @@
 /**/runtime/solr_drupal_6_x/data/*/
 /nbproject
 /.vscode
-/.history
+/**/.history
 docker-compose-web.code-workspace
