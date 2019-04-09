@@ -4,7 +4,7 @@ services:
 
     traefik:
         image: traefik:${TRAEFIK_TAG}
-        container_name: "${TRAEFIK_NETWORK}-traefik"
+        container_name: "${PROXY_NETWORK}-traefik"
         volumes:
         - ./traefik.toml:/etc/traefik/traefik.toml
         - /var/run/docker.sock:/var/run/docker.sock
@@ -21,7 +21,7 @@ services:
             - "--docker.watch"
             - "--docker.domain=${TRAEFIK_DOCKER_DOMAIN}"
         labels:
-            - "traefik.docker.network=${TRAEFIK_NETWORK}"
+            - "traefik.docker.network=${PROXY_NETWORK}"
             - "traefik.enable=true"
             - "traefik.frontend.rule=Host:traefik.${TRAEFIK_DOCKER_DOMAIN}"
         networks:
@@ -36,4 +36,4 @@ services:
 networks:
     0_traefik:
         driver: bridge
-        name: "${TRAEFIK_NETWORK}"
+        name: "${PROXY_NETWORK}"
