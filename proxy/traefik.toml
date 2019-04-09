@@ -2,6 +2,13 @@ defaultEntryPoints = ["https", "http"]
 maxIdleConnsPerHost = 100000
 # Removes cert verification of traefik cert and https container cert.
 insecureSkipVerify = true
+[file]
+[backends]
+  [backends.http-only]
+[frontends]
+  [frontends.http-only]
+  entrypoints = ["http"]
+  backend = "http-only"
 [entryPoints]
   [entryPoints.https]
   address = ":443"
