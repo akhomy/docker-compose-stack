@@ -2,6 +2,7 @@
 defaultEntryPoints = ["https", "http"]
 maxIdleConnsPerHost = 100000
 providersThrottleDuration = "5s"
+insecureSkipVerify = true
 [entryPoints]
   [entryPoints.https]
   address = ":443"
@@ -136,7 +137,7 @@ network = "dockerweb"
 #
 # Optional
 #
-#  [docker.tls]
+[docker.tls]
 #  ca = "/etc/ssl/ca.crt"
 #  cert = "/etc/ssl/docker.crt"
 #  key = "/etc/ssl/docker.key"

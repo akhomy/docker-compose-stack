@@ -13,6 +13,7 @@ services:
             # - "--idletimeout=60s"
             # - "--retry.attempts=100"
             # - "--forwardingtimeouts.responseheadertimeout=60s"
+            # - "--insecureSkipVerify=true"
             - "--debug=${TRAEFIK_DEBUG}"
             - "--logLevel=${TRAEFIK_LOG_LEVEL}"
             - "--api"
