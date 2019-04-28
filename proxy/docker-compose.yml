@@ -10,22 +10,22 @@ services:
         - /var/run/docker.sock:/var/run/docker.sock
         # see https://github.com/containous/traefik/issues/7
         command:
-#            - "--retry.attempts=10"
-#            - "--idletimeout=60s"
-#            - "--forwardingtimeouts.responseheadertimeout=60s"
+            # - "--idletimeout=60s"
+            # - "--retry.attempts=100"
+            # - "--forwardingtimeouts.responseheadertimeout=60s"
             - "--debug=${TRAEFIK_DEBUG}"
             - "--logLevel=${TRAEFIK_LOG_LEVEL}"
             - "--api"
             - "--docker"
             - "--web"
-            - "--docker.watch"
+            - "--docker.watch=true"
             - "--docker.domain=${TRAEFIK_DOCKER_DOMAIN}"
         labels:
-            - "traefik.docker.network=${PROXY_NETWORK}"
+            - "traefik.docker.network=${PROXY_NETWORK}}"
             - "traefik.enable=true"
             - "traefik.frontend.rule=Host:traefik.${TRAEFIK_DOCKER_DOMAIN}"
         networks:
-            0_traefik:
+            0_proxy:
                 aliases:
                 - traefik.${TRAEFIK_DOCKER_DOMAIN}
         ports:
@@ -34,6 +34,6 @@ services:
         - '443:443'
 
 networks:
-    0_traefik:
+    0_proxy:
         driver: bridge
         name: "${PROXY_NETWORK}"

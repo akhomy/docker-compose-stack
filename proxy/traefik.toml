@@ -1,20 +1,52 @@
+### Basic settings.
 defaultEntryPoints = ["https", "http"]
 maxIdleConnsPerHost = 100000
-# Removes cert verification of traefik cert and https container cert.
-insecureSkipVerify = true
-[file]
-[backends]
-  [backends.http-only]
-[frontends]
-  [frontends.http-only]
-  entrypoints = ["http"]
-  backend = "http-only"
+providersThrottleDuration = "5s"
 [entryPoints]
   [entryPoints.https]
   address = ":443"
     [entryPoints.https.tls]
   [entryPoints.http]
   address = ":80"
+
+[respondingTimeouts]
+
+# readTimeout is the maximum duration for reading the entire request, including the body.
+#
+# Optional
+# Default: "0s"
+#
+readTimeout = "180s"
+
+# writeTimeout is the maximum duration before timing out writes of the response.
+#
+# Optional
+# Default: "0s"
+#
+writeTimeout = "180s"
+
+# idleTimeout is the maximum duration an idle (keep-alive) connection will remain idle before closing itself.
+#
+# Optional
+# Default: "180s"
+#
+idleTimeout = "360s"
+
+[forwardingTimeouts]
+
+# dialTimeout is the amount of time to wait until a connection to a backend server can be established.
+#
+# Optional
+# Default: "30s"
+#
+dialTimeout = "180s"
+
+# responseHeaderTimeout is the amount of time to wait for a server's response headers after fully writing the request (including its body, if any).
+#
+# Optional
+# Default: "0s"
+#
+responseHeaderTimeout = "180s"
 ################################################################
 # API and dashboard configuration
 ################################################################
@@ -108,4 +140,4 @@ network = "dockerweb"
 #  ca = "/etc/ssl/ca.crt"
 #  cert = "/etc/ssl/docker.crt"
 #  key = "/etc/ssl/docker.key"
-#  insecureSkipVerify = true
+insecureSkipVerify = true
